@@ -30,11 +30,22 @@ export class UserService {
     /**
      * Update user
      */
-    updateUser(user): Observable<User> {
+    createUser(user: User): Observable<User> {
+        return this.http.post(this.userUrl, user)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    /**
+     * Create user
+     */
+    updateUser(user: User): Observable<User> {
         return this.http.put(`${this.userUrl}/${user.id}`, user)
             .map(res => res.json())
             .catch(this.handleError);
     }
+
+
     /**
      * Covert user info from the API to our format
      */

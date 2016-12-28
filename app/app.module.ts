@@ -9,10 +9,12 @@ import { UsersComponent } from './users/users.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserSingleComponent } from './users/user-single/user-single.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { UserCreateComponent } from './users/user-create/user-create.component';
 
-import  'rxjs/add/operator/map';
-import  'rxjs/add/operator/toPromise';
-import  'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @NgModule({
   imports: [ 
@@ -26,7 +28,8 @@ import  'rxjs/add/operator/catch';
     UsersComponent,
     UserListComponent,
     UserSingleComponent,
-    UserEditComponent
+    UserEditComponent,
+    UserCreateComponent
     ],
   providers: [
     UserService

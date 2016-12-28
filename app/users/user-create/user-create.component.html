@@ -1,5 +1,5 @@
-<div *ngIf="user">
-    <form (ngSubmit)="updateUser()">
+<div>
+    <form (ngSubmit)="createUser()">
 
         <div class="form-group">
             <label>Name</label>
@@ -12,6 +12,6 @@
 
         <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
         <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-        <button type="submit" class="btn btn-success">Update User</button>
+        <button type="submit" class="btn btn-success">Create User</button>
     </form>
 </div>
