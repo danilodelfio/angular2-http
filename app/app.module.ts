@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
+import { UserService } from './shared/services/user.service'
+
+import  'rxjs/add/operator/map';
 
 @NgModule({
   imports: [ 
@@ -10,7 +13,12 @@ import { AppComponent } from './app.component';
     HttpModule,
     FormsModule
     ],
-  declarations: [ AppComponent ],
+  declarations: [ 
+    AppComponent 
+    ],
+  providers: [
+    UserService
+    ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}
