@@ -14,15 +14,37 @@ export class UserService {
     getUsers(): Observable<User[]> {
         return this.http.get(this.userUrl)
             .map(res => res.json().data)
+            .map(users => users.map(this.toUser))
             .catch(this.handleError);
     }
     /**
      * Get a single User
      */
-    getUser(): Observable<User> {
-        return this.http.get('http://www.example.com')
+    getUser(id: number): Observable<User> {
+        return this.http.get(`${this.userUrl}/${id}`)
             .map(res => res.json().data)
+            .map(this.toUser)
             .catch(this.handleError);
+    }
+
+    /**
+     * Update user
+     */
+    updateUser(user): Observable<User> {
+        return this.http.put(`${this.userUrl}/${user.id}`, user)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+    /**
+     * Covert user info from the API to our format
+     */
+    private toUser(user): User {
+        return {
+            id: user.id,
+            name: `${user.first_name} ${user.last_name}`,
+            username: `${user.first_name}`,
+            avatar: user.avatar
+        }
     }
 
     /**
