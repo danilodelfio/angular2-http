@@ -1,4 +1,4 @@
-import { UrlSerializer } from '@angular/router';
+import { RouterLink, UrlSerializer } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { User } from './shared/models/user';
@@ -7,14 +7,18 @@ import { UserService } from './shared/services/user.service';
 @Component({
   selector: 'my-app',
   template: `
-    <div class="jumbotron text-center">
-      <h1>The App Lives!</h1>
-      <p>{{ message }}</p>
-    </div>
-    <div *ngIf="users">
-      <div *ngFor="let user of users">
-        <h2>{{user.first_name}}</h2>
+    <div class="container">
+      <div class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a routerLink="/" class="navbar-brand">My HTTP App</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a routerLink="/users">Users</a></li>
+          </ul>
+        </div>
       </div>
+      <router-outlet></router-outlet>
     </div>
   `
 })
